@@ -25,6 +25,9 @@ vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50 -- ~.* Fast *.~
 
+-- Popups
+vim.opt.pumheight = 7
+
 -- Leader key
 vim.g.mapleader = " "
 
