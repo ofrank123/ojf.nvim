@@ -1,1 +1,1 @@
-nmap("<leader>gs", vim.cmd.Git,  "[G]it [S]ummary")
+nmap("<leader>gs", ":vertical Git<CR>",  "[G]it [S]ummary")
