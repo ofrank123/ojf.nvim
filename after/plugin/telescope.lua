@@ -1,0 +1,7 @@
+local builtin = require('telescope.builtin')
+nmap('<leader>ff', builtin.find_files, "[F]ind [F]ile")
+nmap('<leader>fh', builtin.help_tags, "[F]ind [H]elp")
+nmap('<leader>fs', builtin.live_grep, "[F]ind [S]tring")
+nmap('<leader>fb', builtin.buffers, "[F]ind [B]uffer")
+nmap('<leader>fk', builtin.keymaps, "[F]ind [K]eymap")
+nmap('<leader>fr', builtin.oldfiles, "[F]ind [R]ecent")
