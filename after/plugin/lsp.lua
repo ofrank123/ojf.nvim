@@ -1,4 +1,5 @@
 -- [[ Configure LSP ]]
+require('fidget').setup({})
 require("mason").setup()
 
 --  This function gets run when an LSP connects to a particular buffer.
