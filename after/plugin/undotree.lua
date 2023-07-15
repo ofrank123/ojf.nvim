@@ -1,1 +1,1 @@
-nmap("<leader>u", vim.cmd.UndotreeToggle, "[U]ndo")
+nmap("<leader>u", vim.cmd.UndotreeToggle, "[U]ndo Tree")

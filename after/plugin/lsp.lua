@@ -2,13 +2,69 @@
 require('fidget').setup({})
 require("mason").setup()
 
+-- Border config
+local _border = "single"
+
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+    vim.lsp.handlers.hover, {
+        border = _border
+    }
+)
+
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
+    vim.lsp.handlers.signature_help, {
+        border = _border
+    }
+)
+
+vim.diagnostic.config{
+    float={border=_border}
+}
+
+
+
+-- Diagnostic config
+vim.diagnostic.config({
+    virtual_text = false
+})
+
+function OpenDiagnosticIfNoFloat()
+    for _, winid in pairs(vim.api.nvim_tabpage_list_wins(0)) do
+        if vim.api.nvim_win_get_config(winid).zindex then
+            return
+        end
+    end
+    -- THIS IS FOR BUILTIN LSP
+    vim.diagnostic.open_float(0, {
+        scope = "cursor",
+        focusable = false,
+        close_events = {
+            "CursorMoved",
+            "CursorMovedI",
+            "BufHidden",
+            "InsertCharPre",
+            "WinLeave",
+        },
+    })
+end
+
+-- Show diagnostics under the cursor when holding position
+vim.api.nvim_create_augroup("lsp_diagnostics_hold", { clear = true })
+vim.api.nvim_create_autocmd({ "CursorHold" }, {
+    pattern = "*",
+    command = "lua OpenDiagnosticIfNoFloat()",
+    group = "lsp_diagnostics_hold",
+})
+
 --  This function gets run when an LSP connects to a particular buffer.
 local on_attach = function(_, bufnr)
+    vim.api.nvim_command('autocmd CursorHold <bufnr> lua vim.lsp.util.show_line_diagnostics()')
+
     local nmap_lsp = function(keys, func, desc)
         vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
     end
 
-    nmap_lsp('<leader>pn', vim.lsp.buf.rename, '[R]ename in [Project]')
+    nmap_lsp('<leader>pr', vim.lsp.buf.rename, '[R]ename in [Project]')
     nmap_lsp('<leader>.', vim.lsp.buf.code_action, 'Code Action')
 
     nmap_lsp('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
@@ -16,7 +72,7 @@ local on_attach = function(_, bufnr)
     nmap_lsp('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
     nmap_lsp('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
     nmap_lsp('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
-    nmap_lsp('<leader>pD', vim.lsp.buf.type_definition, 'Type [D]efinition')
+    nmap_lsp('<leader>pt', vim.lsp.buf.type_definition, '[T]ype definition in [P]roject')
 
     -- See `:help K` for why this keymap
     nmap_lsp('K', vim.lsp.buf.hover, 'Hover Documentation')
@@ -85,6 +141,14 @@ cmp.setup {
             end
             return vim_item;
         end
+    },
+    window = {
+        completion = {
+            border = "single",
+        },
+        documentation = {
+            border = "single",
+        },
     },
     snippet = {
         expand = function(args)
