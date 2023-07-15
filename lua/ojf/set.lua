@@ -6,7 +6,8 @@ vim.opt.expandtab = true
 vim.opt.number = true
 vim.opt.rnu = true
 
-vim.opt.smartindent = true
+vim.opt.cindent = true
+vim.opt.cino="(0,w1"
 
 vim.opt.wrap = true
 
