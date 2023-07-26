@@ -74,6 +74,9 @@ return require('packer').startup(function(use)
     -- For neovim configging
     use { 'folke/neodev.nvim' }
 
+    -- Indent
+    use { "tpope/vim-sleuth" }
+
     if packer_bootstrap then
     require('packer').sync()
 end
