@@ -21,8 +21,6 @@ vim.diagnostic.config{
     float={border=_border}
 }
 
-
-
 -- Diagnostic config
 vim.diagnostic.config({
     virtual_text = false
