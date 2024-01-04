@@ -7,5 +7,6 @@ local wk = require("which-key").setup({
 require'which-key'.register({
     f = "[F]ind",
     g = "[G]it",
-    p = "[P]roject"
+    p = "[P]roject",
+    h = "[H]arpoon",
 }, { prefix = "<leader>" })

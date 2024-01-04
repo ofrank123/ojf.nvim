@@ -7,7 +7,7 @@ vim.opt.number = true
 vim.opt.rnu = true
 
 vim.opt.cindent = true
-vim.opt.cino="(0,w1"
+vim.opt.cino="(0,w1,l1,Ws"
 
 vim.opt.wrap = true
 

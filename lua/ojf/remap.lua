@@ -7,7 +7,6 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 vim.keymap.set("n", "<leader>y", "\"+y", { desc="yank to clipboard" })
 vim.keymap.set("x", "<leader>y", "\"+y", { desc="yank to clipboard" })
-vim.keymap.set("n", "<leader>p", "\"+p", { desc="paste from clipboard" })
 vim.keymap.set("x", "<leader>p", "\"+p", { desc="paste from clipboard" })
 
 nmap("n", "nzzzv")

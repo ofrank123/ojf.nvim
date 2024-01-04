@@ -33,7 +33,7 @@ function OpenDiagnosticIfNoFloat()
         end
     end
     -- THIS IS FOR BUILTIN LSP
-    vim.diagnostic.open_float(0, {
+    vim.diagnostic.open_float({
         scope = "cursor",
         focusable = false,
         close_events = {
@@ -92,6 +92,14 @@ local servers = {
     gopls = {},
     rust_analyzer = {},
     tsserver = {},
+    zls = {
+        zig = {
+            formattingProvider = "off",
+            zls = {
+                enableAutofix = false,
+            }
+        }
+    },
     lua_ls = {
         Lua = {
             workspace = { checkThirdParty = false },
