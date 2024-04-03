@@ -9,4 +9,5 @@ require'which-key'.register({
     g = "[G]it",
     p = "[P]roject",
     h = "[H]arpoon",
+    c = "[C]omments",
 }, { prefix = "<leader>" })

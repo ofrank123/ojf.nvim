@@ -92,14 +92,7 @@ local servers = {
     gopls = {},
     rust_analyzer = {},
     tsserver = {},
-    zls = {
-        zig = {
-            formattingProvider = "off",
-            zls = {
-                enableAutofix = false,
-            }
-        }
-    },
+    zls = {},
     lua_ls = {
         Lua = {
             workspace = { checkThirdParty = false },

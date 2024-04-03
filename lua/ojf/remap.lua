@@ -14,3 +14,15 @@ nmap("N", "Nzzzv")
 nmap("Q", "<nop>")
 nmap("<leader>d", vim.cmd.Ex, "Open [D]irectory")
 
+local function commentHeader()
+	vim.cmd('normal A//------------------------------');
+	vim.cmd('normal o//~ ojf: ');
+	vim.cmd('startinsert!');
+end
+nmap("<leader>ch", commentHeader, "Insert [H]eader");
+
+local function commentNote()
+	vim.cmd('normal A//- ojf: ');
+	vim.cmd('startinsert!');
+end
+nmap("<leader>cn", commentNote, "Insert [N]ote");
