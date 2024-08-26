@@ -23,7 +23,7 @@ vim.diagnostic.config{
 
 -- Diagnostic config
 vim.diagnostic.config({
-    virtual_text = false
+    virtual_text = true
 })
 
 function OpenDiagnosticIfNoFloat()

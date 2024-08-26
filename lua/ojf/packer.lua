@@ -96,6 +96,15 @@ return require('packer').startup(function(use)
         }
     }
 
+    -- Compile mode
+    use {
+        "ej-shafran/compile-mode.nvim",
+        requires={
+            {"nvim-lua/plenary.nvim"},
+            {"m00qek/baleia.nvim", tag = "v1.3.0" }
+        }
+    }
+
     if packer_bootstrap then
     require('packer').sync()
 end
