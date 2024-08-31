@@ -23,9 +23,17 @@ vim.opt.incsearch = true
 -- Nice Colors :)
 vim.opt.termguicolors = true
 
+-- Font
+vim.cmd [[
+  if exists (':GuiFont')
+    GuiFont Triplicate A Code:h13
+  endif
+]]
+
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
+
 vim.opt.updatetime = 50 -- ~.* Fast *.~
 
 -- Popups
